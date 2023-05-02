@@ -1,0 +1,41 @@
+//Визначити мінімальний елемент серед додатних елементів.
+using System;
+using System.Transactions;
+
+namespace ConsoleApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter number of elements: ");
+            int r = Convert.ToInt32(Console.ReadLine());
+            int[] arr = new int[r];
+            Console.WriteLine("Enter elements: ");
+            for (int i=0; i<arr.Length; i++)
+            {
+                arr[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            int minPositive;
+            int someNum = 1513451314;
+            minPositive = someNum;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] > 0 && arr[i] < minPositive)
+                {
+                    minPositive = arr[i];
+                }
+            }
+
+            if (minPositive == someNum)
+            {
+                Console.WriteLine("Array have not additional numbers");
+            }
+            else
+            {
+                Console.WriteLine("Minimal additional number is: " + minPositive);
+            }
+        }
+    }
+}
