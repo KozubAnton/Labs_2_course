@@ -1,0 +1,33 @@
+using System;
+using System.Transactions;
+
+namespace ConsoleApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter name: ");
+            string name = Console.ReadLine();
+            
+            Console.WriteLine("Enter second name: ");
+            string secondName = Console.ReadLine();
+            
+            Console.WriteLine("Enter third name: ");
+            string thirdName = Console.ReadLine();
+            
+            string result = name + " " + secondName + " " + thirdName;
+            
+            Console.WriteLine(result);
+            
+            Console.WriteLine("Length of name is: " + name.Length);
+            Console.WriteLine("Length of second name is: " + secondName.Length);
+            Console.WriteLine("Length of third name is: " + thirdName.Length);
+            
+            int totalLength = name.Length + secondName.Length + thirdName.Length;
+            Console.WriteLine("Lenght of full name is: " + totalLength);
+            Console.WriteLine(" ");
+            Console.WriteLine("Виконав Козуб Антон IПЗ21008Б");
+        }
+    }
+}
