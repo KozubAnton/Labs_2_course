@@ -1,0 +1,74 @@
+using System;
+
+class Square
+{
+    private double side;
+
+    public Square()
+    {
+        side = 0;
+    }
+
+    public Square(double sideLength)
+    {
+        side = sideLength;
+    }
+
+    public double Side
+    {
+        get { return side; }
+        set { side = value; }
+    }
+
+    public double Area
+    {
+        get { return side * side; }
+    }
+
+    public override string ToString()
+    {
+        return $"Side: {side}, Area: {Area}";
+    }
+
+    public static Square operator +(Square square1, Square square2)
+    {
+        double combinedArea = square1.Area + square2.Area;
+        double newSideLength = Math.Sqrt(combinedArea);
+        return new Square(newSideLength);
+    }
+
+    public static Square operator +(Square square, double number)
+    {
+        double newArea = square.Area + number;
+        double newSideLength = Math.Sqrt(newArea);
+        return new Square(newSideLength);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Створення екземпляру класу Square зі значенням сторони 5
+        Square square1 = new Square(5);
+        Console.WriteLine(square1.ToString());
+
+        // Зміна значення сторони квадрата
+        square1.Side = 7;
+        Console.WriteLine(square1.ToString());
+
+        // Обчислення площі квадрата
+        Console.WriteLine("Area: " + square1.Area);
+
+        // Перевантажена операція "+" для квадратів
+        Square square2 = new Square(3);
+        Square combinedSquare = square1 + square2;
+        Console.WriteLine("Combined Square: " + combinedSquare.ToString());
+
+        // Перевантажена операція "+" для квадрата та числа
+        Square updatedSquare = square1 + 10;
+        Console.WriteLine("Updated Square: " + updatedSquare.ToString());
+
+        Console.ReadLine();
+    }
+}
