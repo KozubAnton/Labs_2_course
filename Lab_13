@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+
+abstract class Vegetable
+{
+    public string Name { get; set; }
+    public int Calories { get; set; }
+
+    public Vegetable(string name, int calories)
+    {
+        Name = name;
+        Calories = calories;
+    }
+}
+
+class Tomato : Vegetable
+{
+    public Tomato() : base("Tomato", 20)
+    {
+    }
+}
+
+class Cucumber : Vegetable
+{
+    public Cucumber() : base("Cucumber", 15)
+    {
+    }
+}
+
+class Lettuce : Vegetable
+{
+    public Lettuce() : base("Lettuce", 5)
+    {
+    }
+}
+
+class Salad
+{
+    private List<Vegetable> vegetables;
+
+    public Salad()
+    {
+        vegetables = new List<Vegetable>();
+    }
+
+    public void AddVegetable(Vegetable vegetable)
+    {
+        vegetables.Add(vegetable);
+    }
+
+    public int CalculateCalories()
+    {
+        int totalCalories = 0;
+        foreach (Vegetable vegetable in vegetables)
+        {
+            totalCalories += vegetable.Calories;
+        }
+        return totalCalories;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Salad salad = new Salad();
+        salad.AddVegetable(new Tomato());
+        salad.AddVegetable(new Cucumber());
+        salad.AddVegetable(new Lettuce());
+
+        Console.WriteLine("Salad Calories: " + salad.CalculateCalories());
+
+        Console.ReadLine();
+    }
+}
