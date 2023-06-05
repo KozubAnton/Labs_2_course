@@ -1,0 +1,116 @@
+using System;
+
+public class CPoint
+{
+    protected int x;
+    protected int y;
+
+    public void SetCoordinates(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int GetX()
+    {
+        return x;
+    }
+
+    public int GetY()
+    {
+        return y;
+    }
+}
+
+public class CColoredPoint : CPoint
+{
+    private string color;
+
+    public void SetColor(string color)
+    {
+        this.color = color;
+    }
+
+    public string GetColor()
+    {
+        return color;
+    }
+}
+
+public class CLine
+{
+    private CPoint startPoint;
+    private CPoint endPoint;
+
+    public void SetStartPoint(CPoint startPoint)
+    {
+        this.startPoint = startPoint;
+    }
+
+    public void SetEndPoint(CPoint endPoint)
+    {
+        this.endPoint = endPoint;
+    }
+
+    public CPoint GetStartPoint()
+    {
+        return startPoint;
+    }
+
+    public CPoint GetEndPoint()
+    {
+        return endPoint;
+    }
+}
+
+public class CColoredLine : CLine
+{
+    private string color;
+
+    public void SetColor(string color)
+    {
+        this.color = color;
+    }
+
+    public string GetColor()
+    {
+        return color;
+    }
+}
+
+public class CPolyLine
+{
+    private CPoint[] points;
+    private int numPoints;
+
+    public CPolyLine(int numPoints)
+    {
+        this.numPoints = numPoints;
+        points = new CPoint[numPoints];
+    }
+
+    public void SetPoint(int index, CPoint point)
+    {
+        if (index >= 0 && index < numPoints)
+        {
+            points[index] = point;
+        }
+        else
+        {
+            Console.WriteLine("Invalid index!");
+        }
+    }
+
+    public CPoint GetPoint(int index)
+    {
+        if (index >= 0 && index < numPoints)
+        {
+            return points[index];
+        }
+        else
+        {
+            Console.WriteLine("Invalid index!");
+            return null;
+        }
+    }
+}
